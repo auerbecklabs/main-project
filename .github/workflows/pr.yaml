@@ -15,8 +15,8 @@ jobs:
         env:
           JSON: ${{ toJSON(github) }}
         run: |
-          echo "FORK=$(echo $JSON | jq '.event.pull_request.head.repo.full_name')" >> $GITHUB_ENV
-          echo "BRANCH=$(echo $JSON | jq '.event.pull_request.head.ref')" >> $GITHUB_ENV
+          echo "FORK=$(echo $JSON | jq -r '.event.pull_request.head.repo.full_name')" >> $GITHUB_ENV
+          echo "BRANCH=$(echo $JSON | jq -r '.event.pull_request.head.ref')" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v3
         with:
