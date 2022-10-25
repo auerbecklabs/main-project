@@ -13,7 +13,8 @@ jobs:
     steps:
       - name: Get Vars
         run: |
-          jq '.event.pull_request.head.repo.full_name' ${{ toJson(github) }}
+#          jq '.event.pull_request.head.repo.full_name' ${{ toJson(github) }}
+          echo "${{ toJson(github) }}"
       - run: |
           echo $FORK
       - name: Checkout
