@@ -27,6 +27,16 @@ jobs:
       - run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url gh-token https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.FORK }}
           git add .
           git commit -am "Updating files"
+          git push gh-token
+
+
+      - name: Commit report
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-username@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Automated report"
           git push
