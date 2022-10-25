@@ -16,14 +16,12 @@ jobs:
           JSON: ${{ toJSON(github) }}
         run: |
           echo "FORK=$(echo $JSON | jq '.event.pull_request.head.repo.full_name')" >> $GITHUB_ENV
-      - run: |
-          echo $FORK
+          echo "BRANCH=$(echo $JSON | jq '.event.pull_request.head.ref')" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        with:
+          repository: ${{ env.FORK }}
+          ref: ${{ env.BRANCH }}
       - run: |
           echo "something" > test.yaml
       - run: |
