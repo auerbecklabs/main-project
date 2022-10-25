@@ -22,6 +22,10 @@ jobs:
           cat test.yaml
       - run: |
           echo ${{ steps.PR.outputs.number }}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - run: |
           echo "something" > test.yaml
       - run: |
