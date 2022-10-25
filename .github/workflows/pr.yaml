@@ -14,6 +14,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: |
+          echo $GITHUB_REPOSITORY
+      - run: |
           cat test.yaml
       - run: |
           echo $RANDOM > test.yaml
