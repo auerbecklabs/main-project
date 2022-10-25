@@ -11,17 +11,14 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     steps:
+      - name: Get Vars
+        run: |
+          echo FORK=$(echo ${{ toJson(github) }} | jq '.event.pull_request.head.repo.full_name') >> $GITHUB_ENV
+      - run: |
+          echo $FORK
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull-request.head.ref }}
-      - run: |
-          echo $GITHUB_REPOSITORY
-      - run: |
-          cat test.yaml
-      - run: |
-          echo ${{ steps.PR.outputs.number }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
