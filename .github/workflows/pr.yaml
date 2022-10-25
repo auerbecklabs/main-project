@@ -15,7 +15,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
-      - echo $RANDOM > test.yaml
+      - run: |
+          echo $RANDOM > test.yaml
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply new files
