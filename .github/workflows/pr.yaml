@@ -25,6 +25,8 @@ jobs:
       - run: |
           cat test.yaml
       - run: |
+          echo ${{ steps.PR.outputs.number }}
+      - run: |
           echo $RANDOM > test.yaml
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
