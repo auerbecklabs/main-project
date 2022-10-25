@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Vars
+        env:
+          JSON: ${{ toJSON(github) }}
         run: |
-          echo "${{ toJson(github) }}"
+          echo $JSON | jq '.event.pull_request.head.repo.full_name' 
       - run: |
           echo $FORK
       - name: Checkout
