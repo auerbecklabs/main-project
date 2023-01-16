@@ -27,6 +27,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker Metadata
+        id: metadata
         uses: docker/metadata-action@69f6fc9d46f2f8bf0d5491e4aabe0bb8c6a4678a # tag=v4.0.1
         with:
           images: |
@@ -41,7 +42,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.docker_meta.outputs.tags }}
+          tags: ${{ steps.metadata.outputs.tags }}
 
       - name: Sign the images
         run: |
