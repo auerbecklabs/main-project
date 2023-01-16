@@ -46,6 +46,6 @@ jobs:
 
       - name: Sign the images
         run: |
-          cosign sign ghcr.io/${{ github.repository}}:${{ steps.metadata.outputs.tags }}
+          cosign sign ${{ steps.metadata.outputs.tags }}
         env:
           COSIGN_EXPERIMENTAL: 1
