@@ -1,2 +1,2 @@
-FROM cgr.dev/chainguard/static
+FROM cgr.dev/chainguard/alpine-base
 
