@@ -36,15 +36,21 @@ jobs:
             type=sha
             type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Build+Push
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.metadata.outputs.tags }}
+#      - name: Build+Push
+#        uses: docker/build-push-action@v3
+#        with:
+#          context: .
+#          push: true
+#          tags: ${{ steps.metadata.outputs.tags }}
 
-      - name: Sign Images
+#      - name: Sign Images
+#        run: |
+#          for i in ${DOCKER_METADATA_OUTPUT_TAGS}; do cosign sign ${i}; done
+#        env:
+#          COSIGN_EXPERIMENTAL: 1  
+
+      - name: Verify image
         run: |
-          for i in ${DOCKER_METADATA_OUTPUT_TAGS}; do cosign sign ${i}; done
+          cosign verify ghcr.io/auerbecklabs/main-project:latest
         env:
-          COSIGN_EXPERIMENTAL: 1  
+          COSIGN_EXPERIMENTAL: 1
