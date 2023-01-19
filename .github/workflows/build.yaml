@@ -33,8 +33,8 @@ jobs:
           images: |
             ghcr.io/${{ github.repository }}
           tags: |
-            type-sha
-            ghcr.io/${{ github.repository}}:latest
+            type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build+Push
         uses: docker/build-push-action@v3
