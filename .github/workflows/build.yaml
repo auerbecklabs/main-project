@@ -45,6 +45,6 @@ jobs:
 
       - name: Sign Images
         run: |
-          for i in ${{ steps.metadata.outputs.tags }}; do echo "hello $i"; done
+          cat /tmp/docker-metadata-action-NYV2jT/docker-metadata-action-bake.json
         env:
           COSIGN_EXPERIMENTAL: 1  
