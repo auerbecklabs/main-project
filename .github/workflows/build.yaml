@@ -45,6 +45,6 @@ jobs:
 
       - name: Sign Images
         run: |
-          for i in ${{ steps.metadata.outputs.tags }}; do echo hello $i; done
+          for i in ${{ steps.metadata.outputs.tags }}; do echo "hello $i"; done
         env:
           COSIGN_EXPERIMENTAL: 1  
