@@ -45,6 +45,6 @@ jobs:
 
       - name: Sign Images
         run: |
-          for i in ${DOCKER_METADATA_OUTPUT_TAGS}; do echo ${i}; done
+          for i in ${DOCKER_METADATA_OUTPUT_TAGS}; do cosign sign ${i}; done
         env:
           COSIGN_EXPERIMENTAL: 1  
