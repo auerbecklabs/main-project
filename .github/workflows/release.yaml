@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Publish Helm charts
-        uses: stefanprodan/helm-gh-pages@master
+        uses: tylerauerbeck/helm-gh-pages@main
         with:
           token: ${{ secrets.SUPER_SECRET_TOKEN }}
           charts_dir: ./. 
