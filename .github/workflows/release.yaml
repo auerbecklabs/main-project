@@ -15,4 +15,5 @@ jobs:
           token: ${{ secrets.SUPER_SECRET_TOKEN }}
           charts_dir: chart
           charts_url: "https://auerbecklabs.github.io/charts"
+          repository: "charts"
           branch: main
