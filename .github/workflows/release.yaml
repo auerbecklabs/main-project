@@ -13,7 +13,7 @@ jobs:
         uses: tylerauerbeck/helm-gh-pages@main
         with:
           token: ${{ secrets.SUPER_SECRET_TOKEN }}
-          charts_dir: ./. 
+          charts_dir: .
           charts_url: "https://auerbecklabs.github.io/charts"
           repository: "charts"
           branch: main
